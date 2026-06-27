@@ -29,8 +29,7 @@ Aplikasi berbasis **Laravel 12** untuk mengelola data buku, peminjaman, dan peng
 
 ## Instalasi
 
-```bash
-git clone https://github.com/triyasnur/sistem-informasi-perpustakaan.git
+git clone https://github.com/RismaSari21/sistem-informasi-perpustakaan.git
 
 cd sistem-informasi-perpustakaan
 
@@ -39,6 +38,7 @@ npm install
 
 cp .env.example .env
 php artisan key:generate
+
 php artisan migrate --seed
 
 npm run dev
