@@ -1,94 +1,45 @@
-# 📚 Sistem Informasi Perpustakaan
+# Sistem Informasi Perpustakaan
 
-Sistem Informasi Perpustakaan berbasis Laravel untuk mengelola data buku secara digital.  
-Aplikasi ini dibuat sebagai project kelompok dengan fitur CRUD dan autentikasi pengguna.
+Aplikasi berbasis **Laravel 12** untuk mengelola data buku, peminjaman, dan pengembalian buku secara digital.
 
----
-## 👥 Anggota Tim
+## Anggota Tim
 
-Project ini dikerjakan secara kelompok:
+| Nama | Peran | GitHub |
+|------|-------|--------|
+| **Triyas Nurlita Nurul Adha** | Ketua Tim, Dashboard, CRUD Buku | https://github.com/triyasnur |
+| **Risma Sari** | CRUD Peminjaman Buku | https://github.com/username-risma |
+| **Florentina Kewa Lobemato** | CRUD Pengembalian Buku | https://github.com/username-florentina |
 
-- Ketua: Triyas Nurlita Nurul Adha  
-- Anggota 2: Risma Sari    
-- Anggota 3: Florentina Kewa Lobemato  
+## Fitur
 
-## 🚀 Fitur Utama
+- Login & Register
+- Dashboard
+- CRUD Data Buku
+- CRUD Peminjaman Buku
+- CRUD Pengembalian Buku
+- Profil Pengguna
 
-### 🔐 Autentikasi
-- Login user
-- Register user
-- Forgot password / reset password
-- Logout
+## Teknologi
 
----
-
-### 📚 Manajemen Buku (CRUD)
-- Tambah data buku
-- Lihat daftar buku
-- Edit data buku
-- Hapus data buku
-- Detail buku
-- Pencarian buku
-- Filter kategori buku
-
----
-
-### 📊 Dashboard
-- Total koleksi buku
-- Buku terbaru (card warna-warni)
-- Distribusi kategori buku (progress bar)
-- Tampilan modern dengan Tailwind CSS
-
----
-
-### 🧭 Sidebar Menu
-- 🏠 Dashboard  
-- 📚 Data Buku (CRUD)  
-- 👤 Profile User  
-- 🔐 Logout  
-
-Sidebar dibuat responsif dan mudah digunakan.
-
----
-
-## 🖥️ Tampilan Aplikasi
-
-### Dashboard
-- Statistik jumlah buku
-- Buku terbaru dengan cover warna-warni
-- Grafik kategori buku
-
-### Data Buku
-- Tabel data buku lengkap
-- Fitur search & filter
-- Action: Detail, Edit, Hapus
-
----
-
-## 🛠️ Teknologi yang Digunakan
-
-- Laravel 11
+- Laravel 12
 - PHP 8+
-- MySQL
+- SQLite
 - Tailwind CSS
 - Vite
-- Blade Template
 
----
-
-## ⚙️ Cara Instalasi
+## Instalasi
 
 ```bash
 git clone https://github.com/triyasnur/sistem-informasi-perpustakaan.git
+
 cd sistem-informasi-perpustakaan
 
 composer install
 npm install
-npm run dev
 
 cp .env.example .env
 php artisan key:generate
-
 php artisan migrate --seed
 
+npm run dev
 php artisan serve
