@@ -52,9 +52,9 @@
             </div>
 
             <div class="bg-white/80 rounded-2xl p-4 border border-white/60 z-10 shadow-sm">
-                <h2 class="font-extrabold text-sm text-[#2F1D4A] leading-tight">Jelajahi Dunia Lewat Buku</h2>
+                <h2 class="font-extrabold text-sm text-[#2F1D4A] leading-tight">Dunia Pengetahuan Ada di Sini! 📚</h2>
                 <p class="mt-1 text-[#593E7D] text-[11px] leading-relaxed font-medium">
-                    Akses ribuan koleksi buku, jurnal ilmiah, dan literatur terbaik dalam satu platform cerdas.
+                    Ribuan buku, jurnal, dan literatur seru siap kamu jelajahi kapan saja dan di mana saja.
                 </p>
             </div>
         </div>
@@ -64,27 +64,27 @@
             @if (Route::has('register'))
                 <a href="{{ route('register') }}" 
                    class="absolute top-8 right-10 z-30 flex items-center p-2 text-xs font-bold text-[#6C4E97] hover:text-[#4A346B] transition-colors cursor-pointer select-none">
-                    Belum Punya Akun? Daftar
+                    Belum punya akun? Yuk daftar!
                 </a>
             @endif
 
             <div class="mb-6 mt-4">
-                <h1 class="text-3xl font-black text-gray-800 tracking-tight">Selamat Datang</h1>
-                <p class="text-gray-400 mt-1.5 text-xs">Silakan masuk ke akun Anda untuk melanjutkan akses.</p>
+                <h1 class="text-3xl font-black text-gray-800 tracking-tight">Halo, Selamat Datang! 👋</h1>
+                <p class="text-gray-400 mt-1.5 text-xs">Masuk dulu yuk, banyak buku seru yang nunggu kamu!</p>
             </div>
 
             <form method="POST" action="{{ route('login') }}" class="space-y-4">
                 @csrf
 
                 <div>
-                    <label class="text-[10px] font-black text-gray-400 uppercase tracking-wider">Email Address</label>
+                    <label class="text-[10px] font-black text-gray-400 uppercase tracking-wider">Alamat Email Kamu</label>
                     <div class="mt-1.5 relative rounded-xl shadow-sm">
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#8F74B4]">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206" />
                             </svg>
                         </div>
-                        <input type="email" name="email" value="{{ old('email') }}" required placeholder="nama@email.com"
+                        <input type="email" name="email" value="{{ old('email') }}" required placeholder="contoh@email.com"
                                class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 focus:border-[#8F74B4] focus:ring-4 focus:ring-[#EAE2F3] text-xs transition-all bg-gray-50/40 text-gray-700 outline-none">
                     </div>
                     @error('email')
@@ -93,7 +93,7 @@
                 </div>
 
                 <div>
-                    <label class="text-[10px] font-black text-gray-400 uppercase tracking-wider">Password</label>
+                    <label class="text-[10px] font-black text-gray-400 uppercase tracking-wider">Password Kamu</label>
                     <div class="mt-1.5 relative rounded-xl shadow-sm">
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#8F74B4]">
                             <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -111,19 +111,19 @@
                 <div class="flex justify-between items-center text-[11px] pt-1 select-none">
                     <label class="flex items-center gap-2 text-gray-400 cursor-pointer">
                         <input type="checkbox" name="remember" class="rounded border-gray-300 text-[#6C4E97] focus:ring-[#8F74B4] w-3.5 h-3.5">
-                        Remember me
+                        Ingat aku ya!
                     </label>
 
                     @if (Route::has('password.request'))
                         <a href="{{ route('password.request') }}" class="text-[#6C4E97] font-bold hover:text-[#4A346B] transition-colors">
-                            Lupa Password?
+                            Lupa password?
                         </a>
                     @endif
                 </div>
 
                 <div class="pt-2">
                     <button type="submit" class="w-full py-3 rounded-xl bg-[#6C4E97] hover:bg-[#593E7D] text-white text-xs font-bold shadow-md shadow-purple-100 transition-all transform hover:-translate-y-0.5 cursor-pointer">
-                        Masuk Sekarang
+                        Ayo Masuk! 
                     </button>
                 </div>
             </form>
