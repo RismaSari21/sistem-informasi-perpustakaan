@@ -12,7 +12,11 @@ class Transaction extends Model
         'member_id',
         'book_id',
         'tanggal_pinjam',
+        'jatuh_tempo',
         'tanggal_kembali',
+        'denda_per_hari',
+        'hari_terlambat',
+        'total_denda',
         'status',
     ];
 

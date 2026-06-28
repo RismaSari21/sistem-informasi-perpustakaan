@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
@@ -57,6 +57,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/transactions/peminjaman/create', [TransactionController::class, 'createPeminjaman'])->name('transactions.create_peminjaman');
     Route::post('/transactions/peminjaman', [TransactionController::class, 'storePeminjaman'])->name('transactions.store_peminjaman');
     Route::put('/transactions/{id}/return', [TransactionController::class, 'returnBuku'])->name('transactions.return_buku');
+    Route::get('/denda', [TransactionController::class, 'denda'])->name('transactions.denda');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -65,3 +66,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/auth.php';
+

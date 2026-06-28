@@ -1,4 +1,4 @@
-<x-app-layout>
+﻿<x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div>
@@ -22,7 +22,7 @@
                         </div>
                         <div>
                             <h1 class="text-lg font-semibold text-gray-900">Form Peminjaman Buku</h1>
-                            <p class="mt-1 text-sm text-gray-500">Pilih anggota dan buku yang tersedia untuk mencatat transaksi baru.</p>
+                            <p class="mt-1 text-sm text-gray-500">Pilih anggota, buku, jatuh tempo, dan denda per hari.</p>
                         </div>
                     </div>
                 </div>
@@ -71,6 +71,20 @@
                         </div>
                     </div>
 
+                    <div class="grid gap-5 sm:grid-cols-2">
+                        <div>
+                            <label class="text-sm font-semibold text-gray-700" for="jatuh_tempo">Jatuh Tempo</label>
+                            <input id="jatuh_tempo" type="date" name="jatuh_tempo" value="{{ old('jatuh_tempo') }}" required
+                                   class="mt-1.5 w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-700 outline-none transition focus:border-[#6C4E97] focus:ring-4 focus:ring-[#EEE7F5]">
+                        </div>
+
+                        <div>
+                            <label class="text-sm font-semibold text-gray-700" for="denda_per_hari">Denda per Hari</label>
+                            <input id="denda_per_hari" type="number" min="0" name="denda_per_hari" value="{{ old('denda_per_hari', 0) }}" required
+                                   class="mt-1.5 w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-700 outline-none transition focus:border-[#6C4E97] focus:ring-4 focus:ring-[#EEE7F5]">
+                        </div>
+                    </div>
+
                     <div>
                         <label class="text-sm font-semibold text-gray-700" for="book_id">Buku Perpustakaan</label>
                         <select id="book_id" name="book_id" required
@@ -82,7 +96,7 @@
                                 </option>
                             @endforeach
                         </select>
-                        <p class="mt-2 text-xs text-gray-400">Buku dengan stok habis tidak bisa dipilih untuk transaksi baru.</p>
+                        <p class="mt-2 text-xs text-gray-400">Nilai denda akan dihitung otomatis saat buku dikembalikan.</p>
                     </div>
 
                     <div class="flex flex-col-reverse gap-3 border-t border-gray-100 pt-5 sm:flex-row sm:justify-end">

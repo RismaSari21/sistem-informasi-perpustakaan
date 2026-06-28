@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Member;
 use App\Models\Transaction;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    // 1. Tampilan Utama (Dua Tabel: Anggota & Sirkulasi)
     public function index()
     {
         $members = Member::latest()->get();
@@ -20,13 +20,11 @@ class TransactionController extends Controller
         return view('transactions.index', compact('members', 'books', 'transactions', 'returnedTransactions'));
     }
 
-    // 2. Form Tambah Anggota
     public function createMember()
     {
         return view('transactions.create_member');
     }
 
-    // 3. Simpan Anggota Baru
     public function storeMember(Request $request)
     {
         $request->validate([
@@ -42,17 +40,14 @@ class TransactionController extends Controller
         return redirect()->route('transactions.index')->with('success', 'Anggota baru berhasil didaftarkan!');
     }
 
-    // 4. Form Peminjaman Buku
     public function createPeminjaman()
     {
         $members = Member::all();
-        // Hanya memunculkan buku yang stoknya lebih dari 0
-        $books = Book::all(); 
+        $books = Book::all();
 
         return view('transactions.create_peminjaman', compact('members', 'books'));
     }
 
-    // 5. Simpan Transaksi Peminjaman (Stok Buku Otomatis -1)
     public function storePeminjaman(Request $request)
     {
         $request->validate([
@@ -60,31 +55,33 @@ class TransactionController extends Controller
             'member_id' => 'required|exists:members,id',
             'book_id' => 'required|exists:books,id',
             'tanggal_pinjam' => 'required|date',
+            'jatuh_tempo' => 'required|date|after_or_equal:tanggal_pinjam',
+            'denda_per_hari' => 'required|integer|min:0',
         ]);
 
         $book = Book::findOrFail($request->book_id);
 
-        // Validasi tambahan jika stok mendadak kosong
         if ($book->stok < 1) {
             return back()->withErrors(['book_id' => 'Maaf, stok buku ini sedang habis!']);
         }
 
-        // Buat data transaksi peminjaman
         Transaction::create([
             'kode_transaksi' => $request->kode_transaksi,
             'member_id' => $request->member_id,
             'book_id' => $request->book_id,
             'tanggal_pinjam' => $request->tanggal_pinjam,
+            'jatuh_tempo' => $request->jatuh_tempo,
+            'denda_per_hari' => $request->denda_per_hari,
+            'hari_terlambat' => 0,
+            'total_denda' => 0,
             'status' => 'dipinjam',
         ]);
 
-        // Kurangi stok buku
         $book->decrement('stok');
 
         return redirect()->route('transactions.index')->with('success', 'Transaksi peminjaman berhasil dicatat! Stok buku berkurang.');
     }
 
-    // 6. Proses Pengembalian Buku (Stok Buku Otomatis +1)
     public function returnBuku($id)
     {
         $transaction = Transaction::findOrFail($id);
@@ -93,15 +90,34 @@ class TransactionController extends Controller
             return back()->with('success', 'Buku ini sudah dikembalikan sebelumnya.');
         }
 
-        // Update data transaksi
+        $tanggalKembali = Carbon::today();
+        $jatuhTempo = $transaction->jatuh_tempo ? Carbon::parse($transaction->jatuh_tempo) : Carbon::parse($transaction->tanggal_pinjam);
+        $hariTerlambat = $tanggalKembali->gt($jatuhTempo) ? $jatuhTempo->diffInDays($tanggalKembali) : 0;
+        $totalDenda = $hariTerlambat * (int) $transaction->denda_per_hari;
+
         $transaction->update([
-            'tanggal_kembali' => date('Y-m-d'),
+            'tanggal_kembali' => $tanggalKembali->toDateString(),
+            'hari_terlambat' => $hariTerlambat,
+            'total_denda' => $totalDenda,
             'status' => 'dikembalikan',
         ]);
 
-        // Tambah (kembalikan) stok buku
         $transaction->book()->increment('stok');
 
-        return redirect()->route('transactions.index')->with('success', 'Buku berhasil dikembalikan! Stok buku bertambah.');
+        return redirect()->route('transactions.index')->with('success', $totalDenda > 0
+            ? 'Buku berhasil dikembalikan dan denda sudah dihitung.'
+            : 'Buku berhasil dikembalikan! Tidak ada denda keterlambatan.');
+    }
+
+    public function denda()
+    {
+        $transactions = Transaction::with(['book', 'member'])
+            ->where('total_denda', '>', 0)
+            ->latest('tanggal_kembali')
+            ->get();
+
+        $totalDenda = $transactions->sum('total_denda');
+
+        return view('transactions.denda', compact('transactions', 'totalDenda'));
     }
 }
