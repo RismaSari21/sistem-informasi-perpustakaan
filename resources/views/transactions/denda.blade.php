@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-xs font-semibold uppercase tracking-widest text-[#8F74B4]">Transaksi</p>
+                <p class="text-xs font-semibold uppercase tracking-widest text-[#8F74B4]">Pinjaman</p>
                 <h2 class="text-xl font-semibold text-gray-900 tracking-tight">Denda Keterlambatan</h2>
             </div>
             <a href="{{ route('transactions.index') }}" class="rounded-lg border border-[#DCD3EA] bg-[#F8F5FC] px-3 py-2 text-sm font-semibold text-[#6C4E97] transition hover:bg-[#F0EBF7]">
@@ -15,7 +15,7 @@
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-6">
             <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 <div class="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
-                    <p class="text-sm text-gray-500">Total Denda Terkumpul</p>
+                    <p class="text-sm text-gray-500">Total Denda </p>
                     <p class="mt-2 text-2xl font-bold text-gray-900">Rp {{ number_format($totalDenda, 0, ',', '.') }}</p>
                 </div>
                 <div class="rounded-lg border border-gray-100 bg-white p-5 shadow-sm">
@@ -30,7 +30,7 @@
 
             <section class="rounded-lg border border-gray-100 bg-white shadow-sm">
                 <div class="border-b border-gray-100 px-5 py-4">
-                    <h2 class="text-base font-semibold text-gray-900">Daftar Denda</h2>
+                    <h2 class="text-base font-semibold text-gray-900">Daftar Keterlambatan</h2>
                     <p class="text-sm text-gray-500">Transaksi yang memiliki denda keterlambatan.</p>
                 </div>
 
