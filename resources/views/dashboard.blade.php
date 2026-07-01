@@ -2,13 +2,8 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div>
-                <p class="text-xs font-semibold uppercase tracking-widest text-white">
-    Ringkasan
-</p>
-
-<h2 class="text-xl font-semibold text-white tracking-tight">
-    Dashboard Perpustakaan
-</h2>
+                <p class="text-xs font-semibold uppercase tracking-widest text-[#8F74B4]">Ringkasan</p>
+                <h2 class="text-xl font-semibold text-[#8F74B4] tracking-tight">Dashboard Perpustakaan</h2>
             </div>
             <div class="hidden h-10 w-10 items-center justify-center rounded-lg bg-[#F0EBF7] text-[#6C4E97] sm:flex">
                 <i class="fa-solid fa-chart-simple"></i>
