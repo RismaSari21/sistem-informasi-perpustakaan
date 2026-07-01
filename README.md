@@ -7,8 +7,8 @@ Aplikasi berbasis **Laravel 12** untuk mengelola data buku, peminjaman, dan peng
 | Nama | Peran | GitHub |
 |------|-------|--------|
 | **Triyas Nurlita Nurul Adha** | Ketua Tim, Dashboard, CRUD Buku | https://github.com/triyasnur |
-| **Risma Sari** | CRUD Peminjaman Buku | https://github.com/username-risma |
-| **Florentina Kewa Lobemato** | CRUD Pengembalian Buku | https://github.com/username-florentina |
+| **Risma Sari** | CRUD Peminjaman Buku | https://github.com/RismaSari21 |
+| **Florentina Kewa Lobemato** | CRUD Pengembalian Buku | https://github.com/flrntnaa07 |
 
 ## Fitur
 
