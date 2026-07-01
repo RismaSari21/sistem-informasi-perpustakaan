@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <p class="text-xs font-semibold uppercase tracking-widest text-[#8F74B4]">Pinjaman</p>
-                <h2 class="text-xl font-semibold text-gray-900 tracking-tight">Denda Keterlambatan</h2>
+                <h2 class="text-xl font-semibold text-[#8F74B4] tracking-tight">Denda Keterlambatan</h2>
             </div>
             <a href="{{ route('transactions.index') }}" class="rounded-lg border border-[#DCD3EA] bg-[#F8F5FC] px-3 py-2 text-sm font-semibold text-[#6C4E97] transition hover:bg-[#F0EBF7]">
                 Kembali

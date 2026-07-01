@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white tracking-tight">
+        <h2 class="font-semibold text-xl text-[#8F74B4] tracking-tight">
             Data Buku
         </h2>
     </x-slot>
