@@ -1,4 +1,4 @@
-<x-app-layout>
+﻿<x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <div>
@@ -70,7 +70,7 @@
                         </span>
                     </div>
                     <p class="mt-4 text-3xl font-bold text-gray-900">{{ $returnedLoans }}</p>
-                    <p class="mt-1 text-sm text-gray-500">Riwayat pengembalian</p>
+                    <p class="mt-1 text-sm text-gray-500">Total pengembalian selesai</p>
                 </div>
             </div>
 
@@ -315,60 +315,4 @@
              </div>
          </div>
 
-         <section class="rounded-lg border border-gray-100 bg-white shadow-sm mt-6">
-             <div class="border-b border-gray-100 px-5 py-4">
-                 <h2 class="text-base font-semibold text-gray-900">Riwayat Pengembalian</h2>
-                 <p class="text-sm text-gray-500">Daftar buku yang telah dikembalikan.</p>
-             </div>
-             <div class="overflow-x-auto">
-                 <table class="w-full min-w-[820px] text-sm">
-                     <thead class="bg-[#F0EBF7] text-xs font-bold uppercase tracking-wider text-[#6C4E97]">
-                         <tr>
-                             <th class="px-5 py-3 text-left">Kode</th>
-                             <th class="px-5 py-3 text-left">Peminjam</th>
-                             <th class="px-5 py-3 text-left">Buku</th>
-                             <th class="px-5 py-3 text-left">Pinjam</th>
-                             <th class="px-5 py-3 text-left">Kembali</th>
-                             <th class="px-5 py-3 text-center">Status</th>
-                         </tr>
-                     </thead>
-                     <tbody class="divide-y divide-gray-100">
-                         @forelse($returnedTransactions as $trx)
-                             <tr class="transition hover:bg-[#FAF8FD]">
-                                 <td class="px-5 py-4 font-mono text-xs font-bold text-gray-800">{{ $trx->kode_transaksi }}</td>
-                                 <td class="px-5 py-4">
-                                     <p class="font-semibold text-gray-800">{{ $trx->member->nama }}</p>
-                                     <p class="text-xs text-gray-400">{{ $trx->member->nomor_anggota }}</p>
-                                 </td>
-                                 <td class="px-5 py-4 text-gray-600">{{ $trx->book->judul }}</td>
-                                 <td class="px-5 py-4 text-gray-600">{{ \Carbon\Carbon::parse($trx->tanggal_pinjam)->format('d M Y') }}</td>
-                                 <td class="px-5 py-4 text-gray-600">
-                                     {{ $trx->tanggal_kembali ? \Carbon\Carbon::parse($trx->tanggal_kembali)->format('d M Y') : '-' }}
-                                 </td>
-                                 <td class="px-5 py-4 text-center">
-                                     <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-                                         <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                                         Selesai
-                                     </span>
-                                 </td>
-                             </tr>
-                         @empty
-                             <tr>
-                                 <td colspan="6" class="px-5 py-12 text-center">
-                                     <div class="mx-auto flex max-w-sm flex-col items-center">
-                                         <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-[#F0EBF7] text-[#6C4E97]">
-                                             <i class="fa-solid fa-rotate-left"></i>
-                                         </div>
-                                         <p class="font-semibold text-gray-800">Belum ada pengembalian</p>
-                                         <p class="mt-1 text-sm text-gray-500">Belum ada buku yang dikembalikan.</p>
-                                     </div>
-                                 </td>
-                             </tr>
-                         @endforelse
-                     </tbody>
-                 </table>
-             </div>
-         </section>
-     </div>
- </div>
 </x-app-layout>
